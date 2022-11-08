@@ -23,6 +23,7 @@ public class PlayerMovment : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        rb.drag = groundDrag;
     }
 
     private void Update()
@@ -48,9 +49,10 @@ public class PlayerMovment : MonoBehaviour
 
     private void MovePlayer()
     {
+        
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        moveDirection.y = 0;
-
+        //moveDirection.y = 0;
+        
         rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 
